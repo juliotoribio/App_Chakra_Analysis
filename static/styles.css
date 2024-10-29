@@ -1,0 +1,32 @@
+/* Estilos generales */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos para los colores del SVG */
+.cls-1 { fill: #070706; }
+.cls-2 { fill: #f53a3a; }
+.cls-3 { fill: #5865ff; }
+.cls-4 { fill: #fff; }
+.cls-5 { fill: #facd01; }
+.cls-6 { fill: #45b02f; }
+.cls-7 { fill: #d951ff; }
+.cls-8 { fill: #f78519; }
+.cls-9 {
+    fill: none;
+    stroke: #636363;
+    stroke-miterlimit: 10;
+    stroke-width: .25px;
+}
+.cls-10 { fill: #50b0ff; }
+.cls-11 { fill: #ae9890; }
