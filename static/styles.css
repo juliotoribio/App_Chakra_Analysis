@@ -1,6 +1,7 @@
 /* Estilos generales */
 body {
     display: flex;
+    flex-direction: column; /* Alinea los SVGs verticalmente */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -8,14 +9,19 @@ body {
     background-color: #fff;
 }
 
-svg {
-    width: 95%;  /* El SVG ocupará el 90% del ancho de la pantalla */
-    height: auto; /* Mantiene la proporción del SVG */
-    max-height: 90vh; /* No sobrepasa el 90% de la altura de la ventana */
-    max-width: 90vw;  /* No sobrepasa el 90% del ancho de la ventana */
+.svg-container {
+    width: 95%;  /* Ajusta el ancho del contenedor del SVG */
+    max-width: 500px;  /* Limita el ancho máximo a 500px */
+    margin-bottom: 20px;  /* Añade un espacio entre los SVGs */
 }
 
-/* Estilos para los colores del SVG */
+svg {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+}
+
+/* Estilos para los colores del primer SVG */
 .cls-1 { fill: #070706; }
 .cls-2 { fill: #f53a3a; }
 .cls-3 { fill: #5865ff; }
@@ -32,3 +38,12 @@ svg {
 }
 .cls-10 { fill: #50b0ff; }
 .cls-11 { fill: #ae9890; }
+
+/* Estilos para los colores del segundo SVG (Cuerpo Posterior) */
+#Capa_2_posterior .cls-1 { fill: #070706; }
+#Capa_2_posterior .cls-2 { fill: #5865ff; }
+#Capa_2_posterior .cls-3 { fill: #fff; }
+#Capa_2_posterior .cls-4 { fill: #facd01; }
+#Capa_2_posterior .cls-5 { fill: #45b02f; }
+#Capa_2_posterior .cls-6 { fill: #f78519; }
+#Capa_2_posterior .cls-7 { fill: #50b0ff; }
