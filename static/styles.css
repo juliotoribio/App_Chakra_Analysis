@@ -5,12 +5,14 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #fff;
 }
 
 svg {
-    max-width: 100%;
-    height: auto;
+    width: 95%;  /* El SVG ocupará el 90% del ancho de la pantalla */
+    height: auto; /* Mantiene la proporción del SVG */
+    max-height: 90vh; /* No sobrepasa el 90% de la altura de la ventana */
+    max-width: 90vw;  /* No sobrepasa el 90% del ancho de la ventana */
 }
 
 /* Estilos para los colores del SVG */
