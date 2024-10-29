@@ -9,10 +9,40 @@ body {
     background-color: #fff;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Espaciado interno más amplio en los lados */
+    background-color: #7c5438; /* Fondo del header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el header */
+    width: 100%; /* Ajustar la anchura del header al 100% del viewport */
+    box-sizing: border-box; /* Para incluir el padding en el ancho total */
+}
+
+.material-symbols-outlined {
+    font-size: 30px; /* Tamaño del icono */
+    color: #CAB5A4; /* Color por defecto para los iconos */
+    cursor: pointer; /* Muestra que son interactivos */
+    margin: 0 15px; /* Separar los íconos de los bordes del header */
+}
+
+.material-symbols-outlined:hover {
+    color: #FFD700; /* Color dorado suave al pasar el cursor */
+}
+
+.logo {
+    width: 100px; /* Tamaño del logo */
+    height: auto;
+}
+
+
 .svg-container {
     width: 95%;  /* Ajusta el ancho del contenedor del SVG */
     max-width: 500px;  /* Limita el ancho máximo a 500px */
     margin-bottom: 20px;  /* Añade un espacio entre los SVGs */
+    margin-top: 20px;  /* Añade un espacio entre los SVGs */
+
 }
 
 svg {
@@ -32,7 +62,7 @@ svg {
 .cls-8 { fill: #F08318; }
 .cls-9 {
     fill: none;
-    stroke: #636363;
+    stroke: #7c5438;
     stroke-miterlimit: 10;
     stroke-width: .5px;
 }

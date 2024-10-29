@@ -1,6 +1,7 @@
 // Seleccionar todos los círculos de los chakras delanteros
 const chakrasDelanteros = document.querySelectorAll('#Chakras_x5F_Primarios_x5F_Delantero circle');
 let selectedChakra = null;
+let originalChakraColors = {}; // Objeto para almacenar los colores originales de los chakras
 
 // Añadir un evento de clic a cada chakra delantero
 chakrasDelanteros.forEach((chakra, index) => {
@@ -13,18 +14,24 @@ chakrasDelanteros.forEach((chakra, index) => {
         // Guardar el chakra seleccionado
         selectedChakra = event.target;
 
+        // Guardar el color original del chakra si aún no está guardado
+        const chakraId = `chakra-${index}`;
+        if (!originalChakraColors[chakraId]) {
+            originalChakraColors[chakraId] = window.getComputedStyle(selectedChakra).getPropertyValue('fill');
+        }
+
         // Crear un ID único para el menú de opciones de este chakra
-        const chakraId = `chakra-options-${index}`;
+        const optionsId = `chakra-options-${index}`;
 
         // Verificar si el div de opciones ya existe, si no, crearlo
-        let options = document.getElementById(chakraId);
+        let options = document.getElementById(optionsId);
         if (!options) {
-            options = createOptionsDiv(chakraId, selectedChakra);
+            options = createOptionsDiv(optionsId, selectedChakra);
             document.body.appendChild(options);
         }
 
         // Obtener el color del chakra clicado utilizando 'getComputedStyle'
-        const chakraColor = window.getComputedStyle(selectedChakra).getPropertyValue('fill');
+        const chakraColor = originalChakraColors[chakraId];
 
         // Cambiar el color de fondo de cada botón al color del chakra clicado
         const circleButtons = options.querySelectorAll('.circle-button');
@@ -34,6 +41,15 @@ chakrasDelanteros.forEach((chakra, index) => {
             // Añadir lógica de clic para cada botón
             button.onclick = () => {
                 addTextToChakra(selectedChakra, button.textContent);
+                
+                // Cambiar el color del chakra basado en la selección
+                if (button.textContent.toLowerCase() === 'x') {
+                    selectedChakra.style.fill = '#ad9890'; // Cambiar color a negro usando CSS inline
+                } else {
+                    // Restaurar el color original del chakra si se selecciona "+" o "-"
+                    selectedChakra.style.fill = chakraColor;
+                }
+
                 // Ocultar el contenedor de opciones después de seleccionar
                 options.classList.add('hidden');
             };
@@ -72,7 +88,7 @@ function createOptionsDiv(chakraId, chakraElement) {
     const buttonsContainer = document.createElement('div');
     buttonsContainer.className = 'buttons-container';
 
-    ['X', '+', '-'].forEach(symbol => {
+    ['x', '+', '-'].forEach(symbol => {
         const button = document.createElement('button');
         button.className = 'circle-button';
         button.textContent = symbol;
@@ -101,9 +117,10 @@ function addTextToChakra(chakra, textContent) {
 
     // Actualizar el contenido del elemento de texto con el símbolo seleccionado
     textElement.textContent = textContent;
-    textElement.style.fill = "#000"; // Color del texto, puedes cambiarlo si deseas
-    textElement.style.fontSize = "12px";
+    textElement.style.fill = "#fff"; // Color del texto, puedes cambiarlo si deseas
+    textElement.style.fontSize = "11px";
     textElement.style.fontWeight = "bold";
+    textElement.style.fontFamily = "'Montserrat', sans-serif"; // Aplicar la fuente Montserrat
 
     // Añadir evento de clic al texto para volver a mostrar el menú de opciones
     textElement.addEventListener('click', (event) => {
@@ -121,8 +138,8 @@ function showOptionsForText(chakra) {
 
     // Identificar el índice del chakra para obtener el menú de opciones correspondiente
     const index = Array.from(chakrasDelanteros).indexOf(chakra);
-    const chakraId = `chakra-options-${index}`;
-    let options = document.getElementById(chakraId);
+    const optionsId = `chakra-options-${index}`;
+    let options = document.getElementById(optionsId);
 
     // Mostrar el contenedor de opciones de botones
     options.classList.remove('hidden');
