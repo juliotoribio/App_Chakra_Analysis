@@ -22,28 +22,82 @@ svg {
 }
 
 /* Estilos para los colores del primer SVG */
-.cls-1 { fill: #070706; }
-.cls-2 { fill: #f53a3a; }
-.cls-3 { fill: #5865ff; }
+.cls-1 { fill: #E2D1CC; }
+.cls-2 { fill: #db371f; }
+.cls-3 { fill: #844695; }
 .cls-4 { fill: #fff; }
-.cls-5 { fill: #facd01; }
-.cls-6 { fill: #45b02f; }
-.cls-7 { fill: #d951ff; }
-.cls-8 { fill: #f78519; }
+.cls-5 { fill: #fece04; }
+.cls-6 { fill: #42ad4c; }
+.cls-7 { fill: #7373B4; }
+.cls-8 { fill: #F08318; }
 .cls-9 {
     fill: none;
     stroke: #636363;
     stroke-miterlimit: 10;
-    stroke-width: .25px;
+    stroke-width: .5px;
 }
-.cls-10 { fill: #50b0ff; }
+.cls-10 { fill: #2BB9D4; }
 .cls-11 { fill: #ae9890; }
 
 /* Estilos para los colores del segundo SVG (Cuerpo Posterior) */
-#Capa_2_posterior .cls-1 { fill: #070706; }
-#Capa_2_posterior .cls-2 { fill: #5865ff; }
+#Capa_2_posterior .cls-1 { fill: #E2D1CC; }
+#Capa_2_posterior .cls-2 { fill: #844695; }
 #Capa_2_posterior .cls-3 { fill: #fff; }
-#Capa_2_posterior .cls-4 { fill: #facd01; }
-#Capa_2_posterior .cls-5 { fill: #45b02f; }
-#Capa_2_posterior .cls-6 { fill: #f78519; }
-#Capa_2_posterior .cls-7 { fill: #50b0ff; }
+#Capa_2_posterior .cls-4 { fill: #fece04; }
+#Capa_2_posterior .cls-5 { fill: #42ad4c; }
+#Capa_2_posterior .cls-6 { fill: #F08318; }
+#Capa_2_posterior .cls-7 { fill: #2BB9D4; }
+
+/* Estilos para los menús de opciones */
+.chakra-options {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.options-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.circle-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.circle-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+    display: none;
+}
