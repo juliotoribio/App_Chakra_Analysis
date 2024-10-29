@@ -28,12 +28,21 @@ body {
 }
 
 .material-symbols-outlined:hover {
-    color: #FFD700; /* Color dorado suave al pasar el cursor */
+    color: #927c00; /* Color dorado suave al pasar el cursor */
 }
 
 .logo {
     width: 100px; /* Tamaño del logo */
     height: auto;
+}
+
+.main-title {
+    font-family: 'Montserrat', sans-serif; /* Cambia la fuente si es necesario */
+    color: #7c5438; /* Cambia el color según prefieras */
+    text-align: center;
+    margin-top: 50px;
+    font-size: 32px; /* Tamaño del título */
+    font-weight: bold; /* Grosor del título */
 }
 
 
