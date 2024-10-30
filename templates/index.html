@@ -97,22 +97,38 @@
 </svg>
 </div>
 
-
 <div id="chakra-options-template" class="chakra-options hidden">
-    <div class="options-container">
-      <p class="options-title">¿Qué dirección tiene?</p>
-      <div class="buttons-container">
+  <div class="options-container">
+    <p class="options-title">¿Qué dirección tiene?</p>
+    <div class="buttons-container direction-buttons">
+      <div class="button-with-text">
         <button class="circle-button">H</button>
-        <button class="circle-button">A</button>
+        <span class="button-description">Horario</span>
       </div>
-      <p class="options-title">Selecciona el estado:</p>
-      <div class="buttons-container">
+      <div class="button-with-text">
+        <button class="circle-button">A</button>
+        <span class="button-description">Antihorario</span>
+      </div>
+    </div>
+    <p class="options-title">Selecciona el estado:</p>
+    <div class="buttons-container state-buttons">
+      <div class="button-with-text">
         <button class="circle-button">x</button>
+        <span class="button-description">Bloqueado</span>
+      </div>
+      <div class="button-with-text">
         <button class="circle-button">+</button>
+        <span class="button-description">Exacervado</span>
+      </div>
+      <div class="button-with-text">
         <button class="circle-button">-</button>
+        <span class="button-description">Depletado</span>
       </div>
     </div>
   </div>
+</div>
+
+
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 

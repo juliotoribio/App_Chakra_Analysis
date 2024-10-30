@@ -179,3 +179,18 @@ svg {
 .options-title {
     margin-top: 10px;
 }
+
+/* Estilos para los contenedores de botones con descripción */
+.button-with-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Estilos para los textos descriptivos debajo de los botones */
+  .button-description {
+    font-size: 12px; /* Tamaño de fuente pequeño para el texto descriptivo */
+    color: #333; /* Color del texto descriptivo */
+    margin-top: 4px; /* Espacio entre el botón y el texto descriptivo */
+  }
+  
