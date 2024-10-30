@@ -29,7 +29,7 @@
     </header>
 
     <h1 class="main-title">Análisis Energético Integral</h1>
-    
+
       <!-- Contenedor de información personal -->
       <div class="user-info-container">
         <h2 class="user-name">Julio Toribio</h2>
@@ -98,17 +98,21 @@
 </div>
 
 
-<div id="chakra-options" class="hidden">
-  <div class="options-container">
-    <p class="options-title">Selecciona el estado:</p>
-    <div class="buttons-container">
-      <button class="circle-button">x</button>
-      <button class="circle-button">+</button>
-      <button class="circle-button">-</button>
+<div id="chakra-options-template" class="chakra-options hidden">
+    <div class="options-container">
+      <p class="options-title">¿Qué dirección tiene?</p>
+      <div class="buttons-container">
+        <button class="circle-button">H</button>
+        <button class="circle-button">A</button>
+      </div>
+      <p class="options-title">Selecciona el estado:</p>
+      <div class="buttons-container">
+        <button class="circle-button">x</button>
+        <button class="circle-button">+</button>
+        <button class="circle-button">-</button>
+      </div>
     </div>
   </div>
-</div>
-
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 

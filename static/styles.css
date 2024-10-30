@@ -42,8 +42,6 @@ body {
     text-align: center;
     margin-top: 50px;
     font-size: 32px; /* Tamaño del título */
-
-
 }
 
 /* Estilo para el contenedor de la información personal */
@@ -70,16 +68,11 @@ body {
     color: #5A4633; /* Ajusta el color según tu preferencia */
 }
 
-
-
 .svg-container {
     width: 95%;  /* Ajusta el ancho del contenedor del SVG */
     max-width: 500px;  /* Limita el ancho máximo a 500px */
-    margin-bottom: 20px;  /* Añade un espacio entre los SVGs */
-    margin-top: 20px;  /* Añade un espacio entre los SVGs */
+    margin: 20px 0;  /* Añade un espacio entre los SVGs */
     font-family: 'Carlito', sans-serif;
-
-
 }
 
 svg {
@@ -121,13 +114,12 @@ svg {
     z-index: 1000;
     display: flex;
     justify-content: space-around;
-    width: 150px;
-    padding: 10px;
+    width: 250px;
+    padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     font-family: 'Carlito', sans-serif;
-
 }
 
 .options-container {
@@ -136,49 +128,54 @@ svg {
     align-items: center;
     width: 100%;
     font-family: 'Carlito', sans-serif;
-
 }
 
 .options-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 8px;
-    font-weight: 200;
-    font-family: 'Carlito', sans-serif;
-
-
+    margin: 0;
+    text-align: center;
 }
 
 .buttons-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-family: 'Carlito', sans-serif;
-
+    justify-content: center;
+    gap: 20px; /* Espacio entre los botones */
 }
 
+/* Estilo de los botones circulares */
 .circle-button {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    font-size: 18px;
+    border: 2px solid transparent; /* Borde transparente por defecto */
+    color: #fff;
+    font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    font-family: 'Carlito', sans-serif;
-
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .circle-button:hover {
-    background-color: #0056b3;
     transform: scale(1.1);
-    font-family: 'Carlito', sans-serif;
+}
 
+/* Clase para el botón seleccionado */
+.circle-button.selected {
+    border: 4px solid transparent; /* Borde transparente por defecto */
+    border-color: #000;
 }
 
 /* Clase para ocultar elementos */
 .hidden {
     display: none;
+}
+
+
+.options-title {
+    margin-top: 10px;
 }
