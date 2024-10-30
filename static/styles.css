@@ -37,12 +37,13 @@ body {
 }
 
 .main-title {
-    font-family: 'Montserrat', sans-serif; /* Cambia la fuente si es necesario */
+    font-family: 'Carlito', sans-serif;
     color: #7c5438; /* Cambia el color según prefieras */
     text-align: center;
     margin-top: 50px;
     font-size: 32px; /* Tamaño del título */
-    font-weight: bold; /* Grosor del título */
+
+
 }
 
 
