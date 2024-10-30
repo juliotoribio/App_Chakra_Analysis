@@ -194,3 +194,9 @@ svg {
     margin-top: 4px; /* Espacio entre el botón y el texto descriptivo */
   }
   
+
+  .material-symbols-outlined {
+    font-size: 24px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #fff;
+  }
+  
