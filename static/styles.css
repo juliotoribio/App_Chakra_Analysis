@@ -46,12 +46,39 @@ body {
 
 }
 
+/* Estilo para el contenedor de la información personal */
+.user-info-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Estilos para el nombre del usuario */
+.user-name {
+    font-family: 'Carlito', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    margin: 10px 0;
+    color: #7c5438; /* Ajusta el color según tu preferencia */
+}
+
+/* Estilos para la información del usuario */
+.user-info {
+    font-family: 'Carlito', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 5px 0;
+    color: #5A4633; /* Ajusta el color según tu preferencia */
+}
+
+
 
 .svg-container {
     width: 95%;  /* Ajusta el ancho del contenedor del SVG */
     max-width: 500px;  /* Limita el ancho máximo a 500px */
     margin-bottom: 20px;  /* Añade un espacio entre los SVGs */
     margin-top: 20px;  /* Añade un espacio entre los SVGs */
+    font-family: 'Carlito', sans-serif;
+
 
 }
 
@@ -99,6 +126,8 @@ svg {
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    font-family: 'Carlito', sans-serif;
+
 }
 
 .options-container {
@@ -106,18 +135,26 @@ svg {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    font-family: 'Carlito', sans-serif;
+
 }
 
 .options-title {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 8px;
+    font-weight: 200;
+    font-family: 'Carlito', sans-serif;
+
+
 }
 
 .buttons-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    font-family: 'Carlito', sans-serif;
+
 }
 
 .circle-button {
@@ -130,11 +167,15 @@ svg {
     font-size: 18px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    font-family: 'Carlito', sans-serif;
+
 }
 
 .circle-button:hover {
     background-color: #0056b3;
     transform: scale(1.1);
+    font-family: 'Carlito', sans-serif;
+
 }
 
 /* Clase para ocultar elementos */
