@@ -10,15 +10,20 @@ body {
 }
 
 .header {
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0; /* Posición en la parte superior */
+    left: 0;
+    width: 100%; /* Ajustar la anchura del header al 100% del viewport */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px; /* Espaciado interno más amplio en los lados */
     background-color: #7c5438; /* Fondo del header */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el header */
-    width: 100%; /* Ajustar la anchura del header al 100% del viewport */
     box-sizing: border-box; /* Para incluir el padding en el ancho total */
+    z-index: 1000; /* Asegura que el header esté sobre otros elementos */
 }
+
 
 .material-symbols-outlined {
     font-size: 30px; /* Tamaño del icono */
@@ -198,5 +203,55 @@ svg {
   .material-symbols-outlined {
     font-size: 24px; /* Ajusta el tamaño del icono según tus necesidades */
     color: #fff;
+    z-index: 1000;
   }
   
+
+
+  text#Chakra_x5F_Corona_Dir  {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  text#Chakra_x5F_Terce_x5F_Ojo_Dir {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  text#Chakra_x5F_Garganta_Dir {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  text#Chakra_x5F_Corazon_Dir {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  text#Chakra_x5F_Plexo_x5F_Solar_Dir {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  text#Chakra_x5F_Sacro_Dir {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  text#Chakra_x5F_Raiz_Dir {
+    font-size: 14px; /* Ajusta el tamaño del icono según tus necesidades */
+    color: #AE9890;
+    z-index: 1000;
+  }
+
+  /* Estilo para el fondo del chakra al seleccionar estado "X" */
+.chakra-background {
+    fill: #AE9890; /* Cambia el color de fondo del chakra */
+}
+

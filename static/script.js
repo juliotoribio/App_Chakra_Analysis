@@ -1,159 +1,165 @@
 // Seleccionar todos los círculos de los chakras delanteros
 const chakrasDelanteros = document.querySelectorAll('#Chakras_x5F_Primarios_x5F_Delantero circle');
 let selectedChakra = null;
-let originalChakraColors = {}; // Objeto para almacenar los colores originales de los chakras
-let selectedOrientation = {}; // Objeto para almacenar la orientación seleccionada de cada chakra
-let selectedState = {}; // Objeto para almacenar el estado seleccionado de cada chakra
+
+// Objetos para almacenar datos separados para cada chakra
+let originalChakraColors = {};     // Color original
+let selectedOrientation = {};      // Orientación seleccionada (rotate_right, rotate_left)
+let selectedState = {};            // Estado seleccionado (Bloqueado, Exacerbado, Depletado)
 
 // Añadir un evento de clic a cada chakra delantero
 chakrasDelanteros.forEach((chakra, index) => {
+    const chakraId = `chakra-${index}`;  // Asigna un ID único a cada chakra
+
+    // Guardar el color original del chakra si aún no está guardado
+    originalChakraColors[chakraId] = window.getComputedStyle(chakra).getPropertyValue('fill');
+
     chakra.addEventListener('click', (event) => {
-        // Ocultar todos los menús de opciones existentes
-        document.querySelectorAll('.chakra-options').forEach(optionDiv => {
-            optionDiv.classList.add('hidden');
-        });
-
-        // Guardar el chakra seleccionado
         selectedChakra = event.target;
-
-        // Guardar el color original del chakra si aún no está guardado
-        const chakraId = `chakra-${index}`;
-        if (!originalChakraColors[chakraId]) {
-            originalChakraColors[chakraId] = window.getComputedStyle(selectedChakra).getPropertyValue('fill');
+        
+        // Mostrar la orientación y el estado si ya existen en el objeto
+        if (selectedOrientation[chakraId]) {
+            addOrientationText(chakra, selectedOrientation[chakraId]);
         }
-
-        // Crear un ID único para el menú de opciones de este chakra
-        const optionsId = `chakra-options-${index}`;
-
-        // Verificar si el div de opciones ya existe, si no, crearlo
-        let options = document.getElementById(optionsId);
-        if (!options) {
-            options = createOptionsDiv(optionsId, originalChakraColors[chakraId]);
-            document.body.appendChild(options);
+        if (selectedState[chakraId]) {
+            addStateText(chakra, selectedState[chakraId]);
         }
-
-        // Mostrar el contenedor de opciones de botones de orientación
-        options.classList.remove('hidden');
-
-        // Obtener la posición del chakra clicado
-        const rect = selectedChakra.getBoundingClientRect();
-        const offsetX = rect.width / 2;
-        const offsetY = rect.height / 2;
-
-        // Ajustar la posición del div de opciones con respecto al chakra clicado
-        options.style.left = `${rect.left + window.scrollX - offsetX}px`;
-        options.style.top = `${rect.top + window.scrollY + offsetY + 20}px`;
+        
+        // Mostrar el menú de opciones para el chakra seleccionado
+        showOptions(selectedChakra, chakraId);
     });
 });
 
-// Función para crear un nuevo div de opciones con orientación y estado
-function createOptionsDiv(chakraId, chakraColor) {
-    // Clonar la plantilla de opciones desde el HTML
-    const template = document.getElementById('chakra-options-template');
-    const clone = template.cloneNode(true);
+// Función para mostrar el menú de opciones cerca del chakra seleccionado
+// Función para mostrar el menú de opciones cerca del chakra seleccionado
+function showOptions(chakra, chakraId) {
+    // Clonar la plantilla del menú y hacerla visible
+    const options = document.getElementById('chakra-options-template').cloneNode(true);
+    options.classList.remove('hidden');
+    document.body.appendChild(options);
 
-    clone.id = chakraId;
-    clone.classList.remove('hidden');
+    // Posicionar el menú de opciones cerca del chakra seleccionado
+    const rect = chakra.getBoundingClientRect();
+    options.style.left = `${rect.left + window.scrollX - rect.width / 2}px`;
+    options.style.top = `${rect.top + window.scrollY + rect.height}px`;
 
-    // Añadir eventos a los botones de orientación
-    const orientationButtons = clone.querySelectorAll('.buttons-container:nth-of-type(1) .circle-button');
-    orientationButtons.forEach(button => {
-        button.style.backgroundColor = chakraColor; // Aplicar el color del chakra
-        button.onclick = () => {
-            // Marcar botón seleccionado
-            clearSelectedButtons(orientationButtons);
-            button.classList.add('selected');
+    // Definir el color de fondo usando el color original guardado del chakra
+    const bgColor = originalChakraColors[chakraId] || "#AE9890";
 
-            // Guardar la orientación seleccionada para el chakra actual
-            selectedOrientation[chakraId] = button.textContent;
-        };
+    // Aplicar background-color a los botones de orientación
+    const rightButton = options.querySelector('.rotate-right-button');
+    const leftButton = options.querySelector('.rotate-left-button');
+    
+    rightButton.style.backgroundColor = bgColor; // Aplica background-color al botón de orientación horaria
+    leftButton.style.backgroundColor = bgColor;  // Aplica background-color al botón de orientación antihoraria
+
+    rightButton.addEventListener('click', () => {
+        setOrientation(chakraId, 'rotate_right');
+        closeOptions(options);
     });
 
-    // Añadir eventos a los botones de estado
-    const stateButtons = clone.querySelectorAll('.buttons-container:nth-of-type(2) .circle-button');
-    stateButtons.forEach(button => {
-        button.style.backgroundColor = chakraColor; // Aplicar el color del chakra
-        button.onclick = () => {
-            // Resaltar el botón seleccionado
-            clearSelectedButtons(stateButtons);
-            button.classList.add('selected');
-
-            // Comprobar si la orientación fue seleccionada antes de permitir seleccionar el estado
-            if (!selectedOrientation[chakraId]) {
-                alert('Por favor, selecciona primero una dirección.');
-                return;
-            }
-
-            // Guardar el estado seleccionado para el chakra actual
-            selectedState[chakraId] = button.textContent;
-
-            // Actualizar el estado del chakra y ocultar las opciones
-            addTextToChakra(selectedChakra, button.textContent);
-            updateChakraState(button, selectedChakra, originalChakraColors[chakraId]);
-            clone.classList.add('hidden');
-        };
+    leftButton.addEventListener('click', () => {
+        setOrientation(chakraId, 'rotate_left');
+        closeOptions(options);
     });
 
-    return clone;
-}
-
-// Función para limpiar la clase 'selected' de un grupo de botones
-function clearSelectedButtons(buttons) {
-    buttons.forEach(button => button.classList.remove('selected'));
-}
-
-// Función para añadir texto al chakra seleccionado
-function addTextToChakra(chakra, textContent) {
-    let textElement = chakra.nextElementSibling;
-    if (!textElement || textElement.tagName !== 'text') {
-        textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        textElement.setAttribute("x", chakra.getAttribute("cx"));
-        textElement.setAttribute("y", chakra.getAttribute("cy"));
-        textElement.setAttribute("text-anchor", "middle");
-        textElement.setAttribute("dy", ".3em");
-        chakra.parentNode.insertBefore(textElement, chakra.nextSibling);
-    }
-
-    textElement.textContent = textContent;
-    textElement.style.fill = "#fff";
-    textElement.style.fontSize = "11px";
-    textElement.style.fontWeight = "bold";
-    textElement.style.fontFamily = "Carlito, sans-serif";
-
-    textElement.addEventListener('click', (event) => {
-        event.stopPropagation();
-        showOptionsForText(chakra);
+    // Aplica background-color a cada botón de estado también
+    options.querySelectorAll('.state-buttons .circle-button').forEach((button) => {
+        button.style.backgroundColor = bgColor;
+        button.addEventListener('click', () => {
+            setState(chakraId, button.textContent.trim());
+            closeOptions(options);
+        });
     });
 }
 
-// Función para actualizar el estado visual del chakra
-function updateChakraState(button, chakra, originalColor) {
-    if (button.textContent.toLowerCase() === 'x') {
-        chakra.setAttribute('fill', '#000');
+
+// Función para establecer la orientación del chakra y añadir el texto correspondiente
+function setOrientation(chakraId, orientation) {
+    selectedOrientation[chakraId] = orientation;  // Guardar la orientación en el objeto correspondiente
+    addOrientationText(selectedChakra, orientation);
+    updateDirectionDisplay(chakraId);             // Actualizar la visualización de las direcciones de rotación
+}
+
+// Función para actualizar visualmente la dirección de los textos de cada chakra
+function updateDirectionDisplay(chakraId) {
+    // Obtén la dirección seleccionada del chakra desde selectedOrientation
+    const direction = selectedOrientation[chakraId];
+
+    // Selecciona los elementos de texto correspondientes al chakra específico
+    const rightText = document.getElementById(`${chakraId}_Dir_Right`);
+    const leftText = document.getElementById(`${chakraId}_Dir_Left`);
+
+    // Mostrar u ocultar según la dirección
+    if (direction === 'rotate_right') {
+        rightText.style.display = 'inline';  // Mostrar dirección horaria
+        leftText.style.display = 'none';     // Ocultar dirección antihoraria
+    } else if (direction === 'rotate_left') {
+        rightText.style.display = 'none';    // Ocultar dirección horaria
+        leftText.style.display = 'inline';   // Mostrar dirección antihoraria
     } else {
-        chakra.setAttribute('fill', originalColor);
+        // Si no se ha seleccionado dirección, mostrar ambos (o como prefieras)
+        rightText.style.display = 'inline';
+        leftText.style.display = 'inline';
     }
 }
 
-// Función para mostrar las opciones al hacer clic en el texto del chakra
-function showOptionsForText(chakra) {
-    document.querySelectorAll('.chakra-options').forEach(optionDiv => {
-        optionDiv.classList.add('hidden');
-    });
-
-    const index = Array.from(chakrasDelanteros).indexOf(chakra);
-    const chakraId = `chakra-options-${index}`;
-    let options = document.getElementById(chakraId);
-
-    if (options) {
-        options.classList.remove('hidden');
-
-        const rect = chakra.getBoundingClientRect();
-        const offsetX = rect.width / 2;
-        const offsetY = rect.height / 2;
-        options.style.left = `${rect.left + window.scrollX - offsetX}px`;
-        options.style.top = `${rect.top + window.scrollY + offsetY + 20}px`;
+// Función para añadir el texto de orientación (Horario o Antihorario) al chakra
+function addOrientationText(chakra, orientation) {
+    let orientationText = chakra.parentNode.querySelector(`.orientation-text-${chakra.id}`);
+    if (!orientationText) {
+        orientationText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        orientationText.setAttribute("class", `orientation-text-${chakra.id}`);
+        orientationText.setAttribute("text-anchor", "middle");
+        orientationText.setAttribute("fill", "#AE9890");
+        orientationText.style.fontSize = "15px";
+        chakra.parentNode.insertBefore(orientationText, chakra.nextSibling);
     }
+    
+    // Posicionar el texto al lado del chakra
+    orientationText.setAttribute("x", parseFloat(chakra.getAttribute("cx")) + 12);
+    orientationText.setAttribute("y", parseFloat(chakra.getAttribute("cy")) + 4);
+
+    // Mostrar "Horario" para rotate_right y "Antihorario" para rotate_left
+    orientationText.textContent = orientation === 'rotate_right' ? '↻' : '↺'; // '↻' para horario, '↺' para antihorario
+}
+
+
+
+// Función para establecer el estado del chakra y añadir el texto correspondiente
+function setState(chakraId, state) {
+    selectedState[chakraId] = state;  // Guardar el estado en el objeto correspondiente
+    addStateText(selectedChakra, state);
+
+    // Cambiar el color del chakra a #AE9890 si el estado es "X", o restaurar el color original
+    if (state.toLowerCase() === 'x') {
+        selectedChakra.classList.add('chakra-background');  // Añade clase con el color de fondo
+    } else {
+        selectedChakra.classList.remove('chakra-background');  // Elimina clase si el estado no es "X"
+    }
+}
+
+
+
+// Función para añadir el texto de estado (Bloqueado, Exacerbado, Depletado) al chakra
+function addStateText(chakra, state) {
+    let stateText = chakra.parentNode.querySelector(`.state-text-${chakra.id}`);
+    if (!stateText) {
+        stateText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        stateText.setAttribute("class", `state-text-${chakra.id}`);
+        stateText.setAttribute("text-anchor", "middle");
+        stateText.setAttribute("fill", "#ffffff");
+        stateText.style.fontSize = "11px";
+        chakra.parentNode.insertBefore(stateText, chakra.nextSibling);
+    }
+    stateText.setAttribute("x", chakra.getAttribute("cx"));
+    stateText.setAttribute("y", parseFloat(chakra.getAttribute("cy")) + 4);
+    stateText.textContent = state;
+}
+
+// Función para cerrar el menú de opciones
+function closeOptions(options) {
+    options.remove();
 }
 
 // Evento para cerrar los menús si se hace clic fuera de ellos
