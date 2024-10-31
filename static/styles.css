@@ -84,22 +84,25 @@ svg {
     width: 100%;
     height: auto;
     max-height: 90vh;
+    background-color: transparent !important;
+
+    
 }
 
 /* Estilos para los colores del primer SVG */
 .cls-1 { fill: #E2D1CC; }
 .cls-2 { fill: #db371f; }
 .cls-3 { fill: #844695; }
-.cls-4 { fill: #fff; }
+.cls-4 { fill: none; }
 .cls-5 { fill: #fece04; }
 .cls-6 { fill: #42ad4c; }
 .cls-7 { fill: #7373B4; }
 .cls-8 { fill: #F08318; }
 .cls-9 {
-    fill: none;
+    fill: #7c5438;
     stroke: #7c5438;
     stroke-miterlimit: 10;
-    stroke-width: .5px;
+    stroke-width: 0px;
 }
 .cls-10 { fill: #2BB9D4; }
 .cls-11 { fill: #ae9890; }
@@ -255,3 +258,29 @@ svg {
     fill: #AE9890; /* Cambia el color de fondo del chakra */
 }
 
+
+g#Polos_x5F_Delantero{
+    fill: red!important;
+}
+
+.cuerpo_delantero {
+margin-top: -20px;
+z-index: 1000;
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+font-family: 'Carlito', sans-serif;
+color: #7c5438; /* Ajusta el color según tu preferencia */
+
+
+}
+
+
+body {
+    padding-top: 80px; /* Ajusta este valor según la altura real de tu header */
+}
+
+.header {
+    height: 80px; /* Asegúrate de que el header tenga una altura definida */
+}

@@ -117,7 +117,7 @@ function addOrientationText(chakra, orientation) {
     }
     
     // Posicionar el texto al lado del chakra
-    orientationText.setAttribute("x", parseFloat(chakra.getAttribute("cx")) + 12);
+    orientationText.setAttribute("x", parseFloat(chakra.getAttribute("cx")) + 14);
     orientationText.setAttribute("y", parseFloat(chakra.getAttribute("cy")) + 4);
 
     // Mostrar "Horario" para rotate_right y "Antihorario" para rotate_left

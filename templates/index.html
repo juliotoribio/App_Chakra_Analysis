@@ -11,15 +11,27 @@
   
   <!-- Cargar todos los iconos Material Symbols Outlined -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-  
+
+  <!-- Agregar html2pdf.js desde un CDN en el head de tu HTML -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
 
   
-
 
   <title>Visualización de Chakras</title>
   
   <!-- Enlace al archivo de estilos CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='polos.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='download-button.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='download-button.css') }}">
+
+
+
+
+
 </head>
 
 <body>
@@ -37,7 +49,7 @@
       <!-- Contenedor de información personal -->
       <div class="user-info-container">
         <h2 class="user-name">Julio Toribio</h2>
-        <p class="user-info">Fecha de nacimiento: 11/02/1992 (32 años)</p>
+        <p class="user-info">Fecha de Nacimiento: 11/02/1992 (32 años)</p>
         <p class="user-info">Ciudad: Lima</p>
     </div>
 
@@ -67,37 +79,31 @@
             <circle id="Pie_x5F_Izq" class="cls-11" cx="117.36" cy="372.62" r="3"/>
             <circle id="Pie_x5F_Der" class="cls-11" cx="81.36" cy="372.62" r="3"/>
           </g>
+
+
           <g id="Chakras_x5F_Primarios_x5F_Delantero">
-            <circle id="Chakra_x5F_Raiz" class="cls-2" cx="97" cy="225.62" r="6"/>
-            <circle id="Chakra_x5F_Sacro" class="cls-8" cx="97" cy="198.62" r="6"/>
-            <circle id="Chakra_x5F_Plexo_x5F_Solar" class="cls-5" cx="97" cy="165.62" r="6"/>
-            <circle id="Chakra_x5F_Corazon" class="cls-6" cx="97" cy="132.62" r="6"/>
-            <circle id="Chakra_x5F_Garganta" class="cls-10" cx="97" cy="103.62" r="6"/>
-            <circle id="Chakra_x5F_Terce_x5F_Ojo" class="cls-3" cx="97" cy="79.62" r="6"/>
-            <circle id="Chakra_x5F_Corona" class="cls-7" cx="97" cy="61.62" r="6"/>
-                      
+            <circle id="Chakra_x5F_Raiz" class="cls-2" cx="97" cy="225.62" r="7"/>
+            <circle id="Chakra_x5F_Sacro" class="cls-8" cx="97" cy="198.62" r="7"/>
+            <circle id="Chakra_x5F_Plexo_x5F_Solar" class="cls-5" cx="97" cy="165.62" r="7"/>
+            <circle id="Chakra_x5F_Corazon" class="cls-6" cx="97" cy="132.62" r="7"/>
+            <circle id="Chakra_x5F_Garganta" class="cls-10" cx="97" cy="103.62" r="7"/>
+            <circle id="Chakra_x5F_Terce_x5F_Ojo" class="cls-3" cx="97" cy="79.62" r="7"/>
+            <circle id="Chakra_x5F_Corona" class="cls-7" cx="97" cy="61.62" r="7"/>
           </g>
 
-          <g id="Chakras_x5F_Primarios_x5F_Delantero_Dirección">
-            <!-- Chakra Raíz 
+          <!-- <g id="Chakras_x5F_Primarios_x5F_Delantero_Dirección">
             <text id="Chakra_x5F_Raiz_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="232.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Raiz_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="232.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
-        
             <text id="Chakra_x5F_Sacro_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="205.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Sacro_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="205.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
-        
             <text id="Chakra_x5F_Plexo_x5F_Solar_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="172.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Plexo_x5F_Solar_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="172.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
-        
             <text id="Chakra_x5F_Corazon_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="139.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Corazon_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="139.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
-        
             <text id="Chakra_x5F_Garganta_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="110.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Garganta_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="110.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
-        
             <text id="Chakra_x5F_Terce_x5F_Ojo_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="86.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Terce_x5F_Ojo_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="86.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
-        
             <text id="Chakra_x5F_Corona_Dir_Right" class="material-symbols-outlined Dir rotate-right" x="110" y="68.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_right</text>
             <text id="Chakra_x5F_Corona_Dir_Left" class="material-symbols-outlined Dir rotate-left" x="84" y="68.62" font-size="8" text-anchor="middle" fill="#AE9890">rotate_left</text>
         </g>-->
@@ -107,11 +113,15 @@
           <g id="Polos_x5F_Delantero">
             <circle id="Norte" class="cls-9" cx="96.83" cy="33.12" r="8.46"/>
             <circle id="Sur" class="cls-9" cx="96.83" cy="400.12" r="8.46"/>
-            <circle id="Yang" class="cls-9" cx="161.63" cy="113.55" r="8.46"/>
-            <circle id="Ying" class="cls-9" cx="34.29" cy="113.55" r="8.46"/>
+            <circle id="Ying" class="cls-9" cx="161.63" cy="113.55" r="8.46"/>
+            <circle id="Yang" class="cls-9" cx="34.29" cy="113.55" r="8.46"/>
           </g>
+
         </svg>
+
+        <p Class="cuerpo_delantero"> CUERPO DELANTERO </p>
       </div>
+
 
       <div class="svg-container">
         <svg id="Capa_2_posterior" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 194 440.92">
@@ -166,8 +176,53 @@
 
 
 
+<!-- Nueva plantilla de opciones para polos -->
+<div id="polo-options-template" class="polo-options hidden">
+  <div class="options-container">
+    <p class="options-title">¿Qué dirección tiene el polo?</p>
+    <div class="buttons-container direction-buttons">
+      <div class="button-with-text">
+        <button class="circle-button rotate-right-button">
+          <span class="material-symbols-outlined">rotate_right</span>
+        </button>
+        <span class="button-description">Horario</span>
+      </div>
+      <div class="button-with-text">
+        <button class="circle-button rotate-left-button">
+          <span class="material-symbols-outlined">rotate_left</span>
+        </button>
+        <span class="button-description">Antihorario</span>
+      </div>
+    </div>
+    <p class="options-title">Selecciona el estado del polo:</p>
+    <div class="buttons-container state-buttons">
+      <div class="button-with-text">
+        <button class="circle-button">x</button>
+        <span class="button-description">Bloqueado</span>
+      </div>
+      <div class="button-with-text">
+        <button class="circle-button">+</button>
+        <span class="button-description">Activo</span>
+      </div>
+      <div class="button-with-text">
+        <button class="circle-button">-</button>
+        <span class="button-description">Inactivo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Botón de descarga de PDF -->
+<button id="download-button" class="download-btn">
+  <span class="material-symbols-outlined">download</span>
+</button>
+
+
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='polos.js') }}"></script>
+<script src="{{ url_for('static', filename='download-button.js') }}"></script>
+
 
 </body>
 </html>
