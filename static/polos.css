@@ -79,8 +79,8 @@
 
 /* Estilo específico para los colores de los elementos de los polos */
 .cls-9 {
-    fill: #7c5438;
-    stroke: #7c5438;
+    fill: #fff;
+    stroke: #AE9890;
     stroke-miterlimit: 10;
-    stroke-width: 0px;
+    stroke-width: 0.5px;
 }

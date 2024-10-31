@@ -99,10 +99,10 @@ svg {
 .cls-7 { fill: #7373B4; }
 .cls-8 { fill: #F08318; }
 .cls-9 {
-    fill: #7c5438;
+    fill: #fff;
     stroke: #7c5438;
     stroke-miterlimit: 10;
-    stroke-width: 0px;
+    stroke-width: 0.5px;
 }
 .cls-10 { fill: #2BB9D4; }
 .cls-11 { fill: #ae9890; }
@@ -256,11 +256,6 @@ svg {
   /* Estilo para el fondo del chakra al seleccionar estado "X" */
 .chakra-background {
     fill: #AE9890; /* Cambia el color de fondo del chakra */
-}
-
-
-g#Polos_x5F_Delantero{
-    fill: red!important;
 }
 
 .cuerpo_delantero {

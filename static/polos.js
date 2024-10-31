@@ -12,7 +12,7 @@ polosDelanteros.forEach((polo, index) => {
     const poloId = `polo-${index}`;  // Asigna un ID único a cada polo
 
     // Guardar el color original del polo si aún no está guardado
-    originalPoloColors[poloId] = window.getComputedStyle(polo).getPropertyValue('fill');
+    // originalPoloColors[poloId] = window.getComputedStyle(polo).getPropertyValue('fill');
 
     polo.addEventListener('click', (event) => {
         selectedPolo = event.target;
@@ -103,11 +103,11 @@ function setPoloState(poloId, state) {
     addPoloStateText(selectedPolo, state);
 
     // Cambiar el color del polo a #AE9890 si el estado es "X", o restaurar el color original
-    if (state.toLowerCase() === 'x') {
-        selectedPolo.style.fill = "#AE9890";  // Cambiar color a #AE9890 si está bloqueado
-    } else {
-        selectedPolo.style.fill = originalPoloColors[poloId];  // Restaurar color original
-    }
+    //f (state.toLowerCase() === 'x') {
+    //    selectedPolo.style.fill = "#AE9890";  // Cambiar color a #AE9890 si está bloqueado
+    //} else {
+    //    selectedPolo.style.fill = originalPoloColors[poloId];  // Restaurar color original
+    //}
 }
 
 // Función para añadir el texto de estado al polo
@@ -117,7 +117,7 @@ function addPoloStateText(polo, state) {
         stateText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         stateText.setAttribute("class", `state-text-${polo.id}`);
         stateText.setAttribute("text-anchor", "middle");
-        stateText.setAttribute("fill", "#ffffff");
+        stateText.setAttribute("fill", "#AE9890");
         stateText.style.fontSize = "11px";
         polo.parentNode.insertBefore(stateText, polo.nextSibling);
     }
